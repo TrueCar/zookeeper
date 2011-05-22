@@ -6,3 +6,7 @@
 Makefile
 pkg
 .idea
+ext/bin
+ext/c
+ext/include
+ext/lib

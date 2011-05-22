@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    zookeeper (0.4.5)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -16,3 +21,4 @@ PLATFORMS
 
 DEPENDENCIES
   echoe (= 4.5.6)
+  zookeeper!
