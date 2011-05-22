@@ -26,12 +26,14 @@ $LIBPATH = ["#{HERE}/lib"]
 $DEFLIBPATH = []
 
 Dir.chdir(HERE) do
-  if File.exist?("lib")
+  if File.exist?("lib") && !(ENV['DEBUG'] or ENV['DEV'])
     puts "Zkc already built; run 'rake clean' first if you need to rebuild."
   else
     puts "Building zkc."
-    puts(cmd = "tar xzf #{BUNDLE} 2>&1")
-    raise "'#{cmd}' failed" unless system(cmd)
+    if (ENV['DEBUG'] or ENV['DEV']) && File.exist?("c")
+      puts(cmd = "tar xzf #{BUNDLE} 2>&1")
+      raise "'#{cmd}' failed" unless system(cmd)
+    end
 
     Dir.chdir(BUNDLE_PATH) do        
       puts(cmd = "env CC=gcc CXX=g++ CFLAGS='-fPIC #{$CFLAGS}' LDFLAGS='-fPIC #{$LDFLAGS}' ./configure --prefix=#{HERE} --without-cppunit --disable-dependency-tracking #{$EXTRA_CONF} 2>&1")
