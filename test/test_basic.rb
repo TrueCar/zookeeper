@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'zookeeper'
 
-z = Zookeeper.new("localhost:2181")
+z = Zookeeper.new(ENV["ZK_HOSTS"] || "localhost:2181")
 
 puts "root: #{z.get_children(:path => "/").inspect}"
 

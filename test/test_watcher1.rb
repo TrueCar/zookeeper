@@ -11,7 +11,7 @@ end
 
 puts 'Initializing Zookeeper'
 
-zk = Zookeeper.new('localhost:2181')
+zk = Zookeeper.new(ENV["ZK_HOSTS"] || 'localhost:2181')
 
 if zk.state != Zookeeper::ZOO_CONNECTED_STATE
   puts 'Unable to connect to Zookeeper!'
