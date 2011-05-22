@@ -30,7 +30,7 @@ Dir.chdir(HERE) do
     puts "Zkc already built; run 'rake clean' first if you need to rebuild."
   else
     puts "Building zkc."
-    if (ENV['DEBUG'] or ENV['DEV']) && File.exist?("c")
+    if !(ENV['DEBUG'] or ENV['DEV']) || !File.exist?("c")
       puts(cmd = "tar xzf #{BUNDLE} 2>&1")
       raise "'#{cmd}' failed" unless system(cmd)
     end
