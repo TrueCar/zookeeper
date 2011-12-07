@@ -1,11 +1,5 @@
-$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
-$LOAD_PATH.unshift(File.expand_path('../../ext', __FILE__))
-$LOAD_PATH.uniq!
-
 require 'rubygems'
-
-gem 'flexmock', '~> 0.8.11'
-
+require 'bundler/setup'
 require 'flexmock'
 require 'zookeeper'
 
